@@ -1,0 +1,131 @@
+{
+  "name": "gpu-monitor",
+  "displayName": "GPU Monitor",
+  "description": "Monitor NVIDIA GPU usage across SSH servers",
+  "version": "0.1.0",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "gpuMonitorContainer",
+          "title": "GPU Monitor",
+          "icon": "media/gpu-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "gpuMonitorContainer": [
+        {
+          "id": "gpuMonitor",
+          "name": "Servers"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "gpuMonitor.refresh",
+        "title": "Refresh All",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "gpuMonitor.refreshServer",
+        "title": "Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "gpuMonitor.connectWithPassword",
+        "title": "Connect (enter password)",
+        "icon": "$(key)"
+      },
+      {
+        "command": "gpuMonitor.clearPassword",
+        "title": "Clear Saved Password"
+      },
+      {
+        "command": "gpuMonitor.openSettings",
+        "title": "Settings",
+        "icon": "$(settings-gear)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "gpuMonitor.refresh",
+          "when": "view == gpuMonitor",
+          "group": "navigation"
+        },
+        {
+          "command": "gpuMonitor.openSettings",
+          "when": "view == gpuMonitor",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "gpuMonitor.refreshServer",
+          "when": "view == gpuMonitor && viewItem =~ /^server/",
+          "group": "inline"
+        },
+        {
+          "command": "gpuMonitor.connectWithPassword",
+          "when": "view == gpuMonitor && viewItem == server-needs-auth",
+          "group": "inline"
+        },
+        {
+          "command": "gpuMonitor.clearPassword",
+          "when": "view == gpuMonitor && (viewItem == server-password || viewItem == server-needs-auth)",
+          "group": "1_actions"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "GPU Monitor",
+      "properties": {
+        "gpuMonitor.servers": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "description": "SSH host aliases to monitor (from ~/.ssh/config). Leave empty to monitor all."
+        },
+        "gpuMonitor.excludedServers": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "description": "SSH host aliases to exclude from monitoring."
+        },
+        "gpuMonitor.refreshInterval": {
+          "type": "number",
+          "default": 30,
+          "minimum": 5,
+          "description": "Auto-refresh interval in seconds."
+        },
+        "gpuMonitor.connectionTimeout": {
+          "type": "number",
+          "default": 8,
+          "minimum": 3,
+          "description": "SSH connection timeout in seconds."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "dependencies": {
+    "ssh2": "^1.16.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/ssh2": "^1.15.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0"
+  }
+}
