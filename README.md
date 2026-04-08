@@ -24,7 +24,7 @@ A Cursor / VS Code extension that monitors NVIDIA GPU usage across your SSH serv
 ### macOS / Linux
 
 ```bash
-git clone https://github.com/<your-username>/gpu-monitor
+git clone https://github.com/huia711/gpu-monitor
 cd gpu-monitor
 bash install.sh
 ```
@@ -34,7 +34,7 @@ Then restart Cursor / VS Code.
 ### Windows
 
 ```powershell
-git clone https://github.com/<your-username>/gpu-monitor
+git clone https://github.com/huia711/gpu-monitor
 cd gpu-monitor
 .\install.ps1
 ```
