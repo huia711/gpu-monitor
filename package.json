@@ -1,13 +1,24 @@
 {
   "name": "gpu-monitor",
   "displayName": "GPU Monitor",
-  "description": "Monitor NVIDIA GPU usage across SSH servers",
+  "description": "Monitor NVIDIA GPU usage (VRAM, utilization, processes) across SSH servers",
   "version": "0.1.0",
-  "publisher": "local",
+  "publisher": "huia711",
+  "icon": "media/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/huia711/gpu-monitor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/huia711/gpu-monitor/issues"
+  },
+  "homepage": "https://github.com/huia711/gpu-monitor#readme",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.85.0"
   },
   "categories": ["Other"],
+  "keywords": ["gpu", "nvidia", "ssh", "monitor", "cuda"],
   "activationEvents": ["onStartupFinished"],
   "main": "./out/extension.js",
   "contributes": {
