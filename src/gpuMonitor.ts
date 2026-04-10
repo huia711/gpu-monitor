@@ -71,6 +71,7 @@ function fetchWithKey(config: SshHostConfig): Promise<FetchResult> {
       '-o', `ConnectTimeout=${timeout}`,
       '-o', 'StrictHostKeyChecking=accept-new',
       '-o', 'LogLevel=ERROR',
+      '-o', 'ClearAllForwardings=yes',   // disable RemoteForward/LocalForward from config
       config.host,     // use alias so SSH reads its own config (ProxyJump etc.)
       REMOTE_CMD,
     ]);
