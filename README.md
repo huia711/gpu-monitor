@@ -2,7 +2,7 @@
 
 A Cursor / VS Code extension that monitors NVIDIA GPU usage across your SSH servers, reading host configuration directly from `~/.ssh/config`.
 
-![SSH GPU Monitor](media/screenshot.png)
+![SSH GPU Monitor](https://raw.githubusercontent.com/huia711/gpu-monitor/main/media/screenshot.png)
 
 ## Features
 
