@@ -2,7 +2,7 @@
   "name": "ssh-gpu-monitor",
   "displayName": "SSH GPU Monitor",
   "description": "Monitor NVIDIA GPU usage (VRAM, utilization, processes) across SSH servers",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "huia",
   "icon": "media/icon.png",
   "repository": {
